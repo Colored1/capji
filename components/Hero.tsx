@@ -3,23 +3,55 @@
 import { useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
-import type { Mesh } from "three";
+import type { Group } from "three";
 
-function GoldKnot() {
-  const meshRef = useRef<Mesh>(null);
+function TechCore() {
+  const groupRef = useRef<Group>(null);
+  const cubesRef = useRef<Group>(null);
 
   useFrame((_, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += delta * 0.2;
-      meshRef.current.rotation.y += delta * 0.3;
+    if (groupRef.current) {
+      groupRef.current.rotation.x += delta * 0.15;
+      groupRef.current.rotation.y += delta * 0.25;
+    }
+    if (cubesRef.current) {
+      cubesRef.current.rotation.y -= delta * 0.4;
     }
   });
 
   return (
-    <mesh ref={meshRef}>
-      <torusKnotGeometry args={[1, 0.3, 200, 32]} />
-      <meshStandardMaterial color="#c9a878" metalness={0.9} roughness={0.25} />
-    </mesh>
+    <group>
+      {/* الكرة الشبكية الخارجية */}
+      <group ref={groupRef}>
+        <mesh>
+          <icosahedronGeometry args={[1.6, 1]} />
+          <meshStandardMaterial
+            color="#c9a878"
+            wireframe
+            emissive="#c9a878"
+            emissiveIntensity={0.25}
+          />
+        </mesh>
+        {/* النواة الصلبة الداخلية */}
+        <mesh>
+          <icosahedronGeometry args={[0.9, 0]} />
+          <meshStandardMaterial color="#c9a878" metalness={0.95} roughness={0.2} />
+        </mesh>
+      </group>
+
+      {/* مكعبات صغيرة تدور حول المجسم (رمز للتصميم والبرمجة) */}
+      <group ref={cubesRef}>
+        {[0, 1, 2, 3, 4, 5].map((i) => {
+          const angle = (i / 6) * Math.PI * 2;
+          return (
+            <mesh key={i} position={[Math.cos(angle) * 2.6, Math.sin(angle * 2) * 0.4, Math.sin(angle) * 2.6]}>
+              <boxGeometry args={[0.22, 0.22, 0.22]} />
+              <meshStandardMaterial color="#f5f5f5" metalness={0.6} roughness={0.3} />
+            </mesh>
+          );
+        })}
+      </group>
+    </group>
   );
 }
 
@@ -42,7 +74,7 @@ export default function Hero() {
         <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[3, 4, 5]} intensity={1.6} />
-          <GoldKnot />
+          <TechCore />
         </Canvas>
       </div>
       <div className="hero-text">

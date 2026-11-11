@@ -58,3 +58,67 @@ main {
   letter-spacing: 0.2em;
   color: var(--muted);
 }
+
+.showcase {
+  padding: 6rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 3rem;
+}
+
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.model-card {
+  border: 1px solid rgba(201, 168, 120, 0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+}
+
+.model-canvas {
+  height: 320px;
+}
+
+.model-label {
+  padding: 0.9rem;
+  text-align: center;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.video-card {
+  position: relative;
+  margin-top: 3rem;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 60vh;
+  min-height: 320px;
+}
+
+.video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-caption {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--fg);
+  letter-spacing: 0.2em;
+}

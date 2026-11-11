@@ -8,8 +8,6 @@ const videos = [
 export default function Showcase() {
   return (
     <section className="showcase">
-      <h2 className="section-title">أعمالنا ثلاثية الأبعاد</h2>
-
       <div className="model-grid">
         <ModelViewer src="/models/laptop-setup.glb" label="جهاز تقني" />
         <ModelViewer src="/models/scene-a/scene.gltf" label="مجسم تصميم" />

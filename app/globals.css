@@ -133,3 +133,43 @@ main {
   color: var(--fg);
   letter-spacing: 0.2em;
 }
+
+/* ===== صقل الأناقة ===== */
+body {
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+.model-card {
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.model-card:hover {
+  border-color: rgba(201, 168, 120, 0.7);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 80px rgba(201, 168, 120, 0.08);
+}
+
+.model-canvas {
+  height: 360px;
+  background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 75%);
+}
+
+.model-label {
+  font-size: 0.85rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(201, 168, 120, 0.15);
+}
+
+.showcase .model-grid + .model-grid {
+  margin-top: 1.5rem;
+}
+
+.video-bg {
+  background: #000;
+}
+
+.hero-title {
+  text-shadow: 0 0 40px rgba(201, 168, 120, 0.25);
+}

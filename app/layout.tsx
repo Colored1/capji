@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import SmoothScroll from "@/components/SmoothScroll";
+import Nav from "@/components/Nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ar">
       <body>
         <SmoothScroll />
+        <Nav />
         {children}
       </body>
     </html>

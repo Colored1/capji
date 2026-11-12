@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import GoogleAuthButton from "@/components/GoogleAuthButton";
 
 const links = [
   { href: "#about", label: "عني" },
@@ -14,6 +15,7 @@ export default function Nav() {
         {site.brand}
       </a>
       <nav className="flex flex-wrap items-center justify-end gap-3 text-xs text-white/80 md:gap-6 md:text-sm">
+        <GoogleAuthButton />
         {links.map((l) => (
           <a key={l.href} href={l.href} className="transition hover:text-gold">
             {l.label}

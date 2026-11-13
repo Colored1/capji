@@ -1,4 +1,3 @@
-import Showcase from "@/components/Showcase";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Works from "@/components/Works";
@@ -13,7 +12,6 @@ export default async function Home() {
   const data = await getPortfolio();
   return (
     <main id="top">
-      <Showcase />
       <Hero />
       <About settings={data.settings} />
       <Works data={data} />

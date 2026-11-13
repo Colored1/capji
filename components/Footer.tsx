@@ -3,7 +3,8 @@ import { site } from "@/lib/site";
 export default function Footer() {
   return (
     <footer className="border-t border-gold/20 px-6 py-10 text-center text-sm text-white/60">
-      <p className="tracking-[0.3em] text-gold">{site.brand}</p>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/logo.png" alt={site.brand} className="mx-auto h-16 w-auto opacity-90" />
       <p className="mt-2">{site.tagline}</p>
       <div className="mt-4 flex flex-wrap justify-center gap-4">
         <a href={`mailto:${site.email}`} className="hover:text-gold">{site.email}</a>

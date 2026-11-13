@@ -11,26 +11,26 @@ export default function About({ settings }: { settings: Settings | null }) {
   const social = (settings?.social_links || "").split("\n").map((l) => l.split("|")).filter((p) => p.length === 2);
 
   return (
-    <section id="about" className="mx-auto max-w-5xl px-6 py-24">
-      <h2 className="mb-8 text-center text-3xl font-light tracking-wide text-gold md:text-4xl">نبذة عني</h2>
-      <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-        <p className="text-lg leading-loose text-white/80">{about}</p>
-        <p className="mt-6 text-sm text-white/50">{site.ownerTitle}</p>
+    <section id="about" className="mx-auto max-w-5xl px-6 py-28">
+      <h2 className="reveal mb-10 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">نبذة عني</h2>
+      <div className="reveal glass-card p-8 md:p-12">
+        <p className="text-lg leading-loose text-fg/85">{about}</p>
+        <p className="mt-6 text-sm text-cyan/80">{site.ownerTitle}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           {skills.map((s) => (
-            <span key={s} className="rounded-full border border-gold/30 px-4 py-1 font-mono text-xs text-gold">
+            <span key={s} className="rounded-full border border-violet/40 bg-violet/10 px-4 py-1 font-mono text-xs text-fg/90">
               {s}
             </span>
           ))}
         </div>
-        <div className="mt-8 flex flex-wrap gap-4 text-sm">
-          <a href={`mailto:${site.email}`} className="text-white/80 hover:text-gold">{site.email}</a>
-          <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-gold">
+        <div className="mt-10 flex flex-wrap gap-4 border-t border-fg/10 pt-8 text-sm">
+          <a href={`mailto:${site.email}`} className="text-fg/80 transition hover:text-cyan">{site.email}</a>
+          <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-fg/80 transition hover:text-cyan">
             واتساب {site.whatsappDisplay}
           </a>
-          <span className="text-white/60">{site.location}</span>
+          <span className="text-fg/60">{site.location}</span>
           {social.map(([name, url]) => (
-            <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-gold">{name}</a>
+            <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="text-fg/80 transition hover:text-cyan">{name}</a>
           ))}
         </div>
       </div>

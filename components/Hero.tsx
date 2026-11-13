@@ -13,8 +13,8 @@ function ReactiveCore({ pointer }: { pointer: Pointer }) {
 
   useFrame((state) => {
     if (!group.current) return;
-    const targetX = pointer.current.y * 0.4;
-    const targetY = pointer.current.x * 0.6 + state.clock.elapsedTime * 0.1;
+    const targetX = pointer.current.y * 0.45;
+    const targetY = pointer.current.x * 0.7 + state.clock.elapsedTime * 0.12;
     group.current.rotation.x += (targetX - group.current.rotation.x) * 0.05;
     group.current.rotation.y += (targetY - group.current.rotation.y) * 0.05;
   });
@@ -23,18 +23,18 @@ function ReactiveCore({ pointer }: { pointer: Pointer }) {
     <group ref={group}>
       <mesh>
         <icosahedronGeometry args={[1.6, 1]} />
-        <meshStandardMaterial color="#c9a878" wireframe emissive="#c9a878" emissiveIntensity={0.25} />
+        <meshStandardMaterial color="#22d3ee" wireframe emissive="#22d3ee" emissiveIntensity={0.35} />
       </mesh>
       <mesh>
         <icosahedronGeometry args={[0.9, 0]} />
-        <meshStandardMaterial color="#c9a878" metalness={0.95} roughness={0.2} />
+        <meshStandardMaterial color="#8b5cf6" metalness={0.9} roughness={0.2} emissive="#8b5cf6" emissiveIntensity={0.15} />
       </mesh>
       {[0, 1, 2, 3, 4, 5].map((i) => {
         const angle = (i / 6) * Math.PI * 2;
         return (
           <mesh key={i} position={[Math.cos(angle) * 2.6, Math.sin(angle * 2) * 0.4, Math.sin(angle) * 2.6]}>
             <boxGeometry args={[0.22, 0.22, 0.22]} />
-            <meshStandardMaterial color="#f5f5f5" metalness={0.6} roughness={0.3} />
+            <meshStandardMaterial color="#c9a878" metalness={0.7} roughness={0.25} />
           </mesh>
         );
       })}
@@ -49,11 +49,7 @@ export default function Hero() {
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.from(titleRef.current, { opacity: 0, y: 60, duration: 1.2 }).from(
-      textRef.current,
-      { opacity: 0, y: 20, duration: 1 },
-      "-=0.7"
-    );
+    tl.from(titleRef.current, { opacity: 0, y: 60, duration: 1.2 }).from(textRef.current, { opacity: 0, y: 20, duration: 1 }, "-=0.7");
   }, []);
 
   function handleMove(e: ReactPointerEvent<HTMLElement>) {
@@ -65,28 +61,30 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" onPointerMove={handleMove} className="relative flex h-screen items-center justify-center overflow-hidden text-center">
+    <section id="hero" onPointerMove={handleMove} className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20 text-center">
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]}>
-          <ambientLight intensity={0.4} />
+          <ambientLight intensity={0.5} />
           <directionalLight position={[3, 4, 5]} intensity={1.6} />
+          <pointLight position={[-3, -2, 3]} color="#8b5cf6" intensity={2} />
           <ReactiveCore pointer={pointer} />
         </Canvas>
       </div>
 
-      <div className="relative z-10 px-6">
-        <h1 ref={titleRef} className="text-4xl font-light text-gold md:text-7xl">
+      <div className="relative z-10 max-w-4xl">
+        <p className="mb-5 inline-block rounded-full border border-cyan/30 bg-cyan/5 px-4 py-1 text-xs tracking-widest text-cyan">
+          {site.tagline}
+        </p>
+        <h1 ref={titleRef} className="text-neon text-5xl font-light leading-tight md:text-8xl">
           {site.ownerName}
         </h1>
         <div ref={textRef}>
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-white/70 md:text-lg">
-            {site.ownerTitle}
-          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-fg/70 md:text-lg">{site.ownerTitle}</p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a href="#works" className="rounded-full border border-gold px-7 py-3 text-gold transition hover:bg-gold hover:text-black">
+            <a href="#works" className="btn-ghost rounded-full px-7 py-3 text-fg">
               استكشف أعمالي
             </a>
-            <a href="#request" className="rounded-full bg-gold px-7 py-3 font-semibold text-black transition hover:opacity-90">
+            <a href="#request" className="btn-primary rounded-full px-7 py-3 font-semibold">
               اطلب خدمة أو حل مشكلتك
             </a>
           </div>

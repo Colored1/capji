@@ -72,36 +72,36 @@ export default function InquiriesManager() {
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-2xl text-gold">صندوق الطلبات</h1>
-        <select value={filter} onChange={(e) => setFilter(e.target.value)} className="rounded-xl border border-white/15 bg-black/40 px-4 py-2 text-white">
+        <h1 className="text-neon text-3xl font-light">صندوق الطلبات</h1>
+        <select value={filter} onChange={(e) => setFilter(e.target.value)} className="rounded-xl border border-fg/15 bg-fg/[0.04] px-4 py-2 text-fg">
           <option value="">كل الأنواع</option>
-          {services.map((s) => <option key={s} value={s} className="bg-black">{s}</option>)}
+          {services.map((s) => <option key={s} value={s} className="bg-bg">{s}</option>)}
         </select>
       </div>
 
       {msg && <p className="mb-4 text-sm text-red-300">{msg}</p>}
-      {loading && <p className="text-white/50">جارٍ التحميل...</p>}
-      {!loading && shown.length === 0 && <p className="text-white/50">لا توجد طلبات.</p>}
+      {loading && <p className="text-fg/50">جارٍ التحميل...</p>}
+      {!loading && shown.length === 0 && <p className="text-fg/50">لا توجد طلبات.</p>}
 
       <div className="space-y-4">
         {shown.map((i) => {
           const reply = replyLink(i.contact, i.full_name);
           return (
-            <div key={i.id} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div key={i.id} className="glass-card p-5">
               <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <h3 className="text-gold">{i.full_name}</h3>
-                  <p className="text-xs text-white/50">{i.service_type} • {new Date(i.created_at).toLocaleString("ar")}</p>
+                  <h3 className="text-cyan">{i.full_name}</h3>
+                  <p className="text-xs text-fg/50">{i.service_type} • {new Date(i.created_at).toLocaleString("ar")}</p>
                 </div>
-                <select value={i.status} onChange={(e) => setStatus(i.id, e.target.value)} className="rounded-xl border border-white/15 bg-black/40 px-3 py-2 text-sm text-white">
-                  {statuses.map((s) => <option key={s.value} value={s.value} className="bg-black">{s.label}</option>)}
+                <select value={i.status} onChange={(e) => setStatus(i.id, e.target.value)} className="rounded-xl border border-fg/15 bg-fg/[0.04] px-3 py-2 text-sm text-fg">
+                  {statuses.map((s) => <option key={s.value} value={s.value} className="bg-bg">{s.label}</option>)}
                 </select>
               </div>
-              <p className="whitespace-pre-line text-sm leading-relaxed text-white/80">{i.details}</p>
-              {i.budget && <p className="mt-2 text-xs text-white/50">الميزانية: {i.budget}</p>}
+              <p className="whitespace-pre-line text-sm leading-relaxed text-fg/80">{i.details}</p>
+              {i.budget && <p className="mt-2 text-xs text-fg/50">الميزانية: {i.budget}</p>}
               <div className="mt-4 flex flex-wrap items-center gap-4 text-sm">
-                <span className="text-white/60">{i.contact}</span>
-                <a href={reply.href} target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">{reply.label}</a>
+                <span className="text-fg/60">{i.contact}</span>
+                <a href={reply.href} target="_blank" rel="noopener noreferrer" className="text-cyan hover:underline">{reply.label}</a>
                 <button onClick={() => remove(i.id)} className="text-red-400 hover:underline">حذف</button>
               </div>
             </div>

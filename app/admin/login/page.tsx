@@ -25,15 +25,20 @@ export default function AdminLoginPage() {
     router.refresh();
   }
 
-  const input = "w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white outline-none focus:border-gold";
+  const input =
+    "w-full rounded-xl border border-fg/15 bg-fg/[0.04] px-4 py-3 text-fg outline-none transition duration-300 focus:border-cyan focus:shadow-glow";
 
   return (
     <main className="flex min-h-screen items-center justify-center px-6">
-      <form onSubmit={login} className="w-full max-w-sm space-y-5 rounded-2xl border border-gold/30 bg-white/5 p-8 backdrop-blur-xl">
-        <h1 className="text-center text-2xl text-gold">لوحة التحكم</h1>
+      <form onSubmit={login} className="glass-card w-full max-w-sm space-y-5 p-8 md:p-10">
+        <div className="flex flex-col items-center gap-3">
+          <img src="/brand/mark-dark.png" alt="CAPJI" className="logo-dark h-16 w-auto" />
+          <img src="/brand/mark-light.png" alt="" aria-hidden className="logo-light h-16 w-auto" />
+          <h1 className="text-neon text-2xl font-light">لوحة التحكم</h1>
+        </div>
         <input type="email" required placeholder="البريد الإلكتروني" value={email} onChange={(e) => setEmail(e.target.value)} className={input} />
         <input type="password" required placeholder="كلمة المرور" value={password} onChange={(e) => setPassword(e.target.value)} className={input} />
-        <button type="submit" disabled={busy} className="w-full rounded-xl bg-gold py-3 font-semibold text-black disabled:opacity-60">
+        <button type="submit" disabled={busy} className="btn-primary w-full rounded-xl py-3 font-semibold disabled:opacity-60">
           {busy ? "جارٍ الدخول..." : "دخول"}
         </button>
         {error && <p className="text-center text-sm text-red-400">{error}</p>}

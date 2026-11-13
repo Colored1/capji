@@ -22,7 +22,7 @@ type Props = {
   columns: { key: string; label: string }[];
 };
 
-const input = "w-full rounded-xl border border-white/15 bg-black/40 px-4 py-2.5 text-white outline-none focus:border-gold";
+const input = "w-full rounded-xl border border-fg/15 bg-fg/[0.04] px-4 py-2.5 text-fg outline-none transition duration-300 focus:border-cyan focus:shadow-glow";
 
 export default function CrudManager({ table, title, fields, columns }: Props) {
   const supabase = useMemo(() => createClient(), []);
@@ -117,8 +117,8 @@ export default function CrudManager({ table, title, fields, columns }: Props) {
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-2xl text-gold">{title}</h1>
-        <button onClick={openNew} className="rounded-full bg-gold px-5 py-2 text-sm font-semibold text-black">
+        <h1 className="text-neon text-3xl font-light">{title}</h1>
+        <button onClick={openNew} className="btn-primary rounded-full px-5 py-2 text-sm font-semibold">
           + إضافة جديد
         </button>
       </div>
@@ -126,13 +126,13 @@ export default function CrudManager({ table, title, fields, columns }: Props) {
       {msg && <p className="mb-4 rounded-xl border border-red-400/40 bg-red-500/10 p-3 text-sm text-red-300">{msg}</p>}
 
       {loading ? (
-        <p className="text-white/50">جارٍ التحميل...</p>
+        <p className="text-fg/50">جارٍ التحميل...</p>
       ) : rows.length === 0 ? (
-        <p className="text-white/50">لا توجد عناصر بعد.</p>
+        <p className="text-fg/50">لا توجد عناصر بعد.</p>
       ) : (
-        <div className="overflow-x-auto rounded-2xl border border-white/10">
+        <div className="overflow-x-auto overflow-hidden rounded-2xl border border-fg/10">
           <table className="w-full text-right text-sm">
-            <thead className="bg-white/5 text-white/60">
+            <thead className="bg-fg/5 text-fg/60">
               <tr>
                 {columns.map((c) => <th key={c.key} className="px-4 py-3 font-normal">{c.label}</th>)}
                 <th className="px-4 py-3 font-normal">إجراءات</th>
@@ -140,12 +140,12 @@ export default function CrudManager({ table, title, fields, columns }: Props) {
             </thead>
             <tbody>
               {rows.map((r) => (
-                <tr key={r.id} className="border-t border-white/10">
+                <tr key={r.id} className="border-t border-fg/10">
                   {columns.map((c) => (
-                    <td key={c.key} className="max-w-xs truncate px-4 py-3 text-white/80">{String(r[c.key] ?? "—")}</td>
+                    <td key={c.key} className="max-w-xs truncate px-4 py-3 text-fg/80">{String(r[c.key] ?? "—")}</td>
                   ))}
                   <td className="whitespace-nowrap px-4 py-3">
-                    <button onClick={() => openEdit(r)} className="ml-3 text-gold hover:underline">تعديل</button>
+                    <button onClick={() => openEdit(r)} className="ml-3 text-cyan hover:underline">تعديل</button>
                     <button onClick={() => remove(r)} className="text-red-400 hover:underline">حذف</button>
                   </td>
                 </tr>
@@ -157,23 +157,23 @@ export default function CrudManager({ table, title, fields, columns }: Props) {
 
       {open && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4">
-          <form onSubmit={save} className="max-h-[90vh] w-full max-w-2xl space-y-4 overflow-y-auto rounded-2xl border border-gold/30 bg-[#111] p-6">
-            <h2 className="text-xl text-gold">{editing ? "تعديل" : "إضافة"}</h2>
+          <form onSubmit={save} className="max-h-[90vh] w-full max-w-2xl space-y-4 overflow-y-auto rounded-2xl border border-cyan/30 bg-bg shadow-glow p-6">
+            <h2 className="text-xl text-cyan">{editing ? "تعديل" : "إضافة"}</h2>
 
             {fields.map((f) => (
               <label key={f.key} className="block space-y-2">
-                <span className="text-sm text-white/70">{f.label}{f.required ? " *" : ""}</span>
+                <span className="text-sm text-fg/70">{f.label}{f.required ? " *" : ""}</span>
 
                 {f.type === "textarea" ? (
                   <textarea rows={4} required={f.required} value={form[f.key] ?? ""} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })} className={input} />
                 ) : f.type === "select" ? (
                   <select required={f.required} value={form[f.key] ?? ""} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })} className={input}>
                     <option value="">—</option>
-                    {f.options?.map((o) => <option key={o} value={o} className="bg-black">{o}</option>)}
+                    {f.options?.map((o) => <option key={o} value={o} className="bg-bg">{o}</option>)}
                   </select>
                 ) : f.type === "file" || f.type === "files" ? (
                   <div className="space-y-2">
-                    <input type="file" accept={f.accept} multiple={f.type === "files"} onChange={(e) => uploadFile(f, e.target.files)} className="text-sm text-white/70" />
+                    <input type="file" accept={f.accept} multiple={f.type === "files"} onChange={(e) => uploadFile(f, e.target.files)} className="text-sm text-fg/70" />
                     {f.type === "files" ? (
                       <textarea rows={3} value={form[f.key] ?? ""} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })} placeholder="رابط في كل سطر" className={input} />
                     ) : (
@@ -189,15 +189,15 @@ export default function CrudManager({ table, title, fields, columns }: Props) {
                     className={input}
                   />
                 )}
-                {f.hint && <span className="block text-xs text-white/40">{f.hint}</span>}
+                {f.hint && <span className="block text-xs text-fg/40">{f.hint}</span>}
               </label>
             ))}
 
-            {busy && <p className="text-sm text-gold">جارٍ الرفع أو الحفظ...</p>}
+            {busy && <p className="text-sm text-cyan">جارٍ الرفع أو الحفظ...</p>}
 
             <div className="flex justify-end gap-3 pt-2">
-              <button type="button" onClick={() => setOpen(false)} className="rounded-full border border-white/20 px-5 py-2 text-sm text-white/70">إلغاء</button>
-              <button type="submit" disabled={busy} className="rounded-full bg-gold px-6 py-2 text-sm font-semibold text-black disabled:opacity-60">حفظ</button>
+              <button type="button" onClick={() => setOpen(false)} className="rounded-full border border-fg/20 px-5 py-2 text-sm text-fg/70 transition hover:border-cyan hover:text-cyan">إلغاء</button>
+              <button type="submit" disabled={busy} className="btn-primary rounded-full px-6 py-2 text-sm font-semibold disabled:opacity-60">حفظ</button>
             </div>
           </form>
         </div>

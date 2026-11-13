@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 import GoogleAuthButton from "@/components/GoogleAuthButton";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -14,6 +15,8 @@ const links = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-fg/5 bg-bg/60 backdrop-blur-xl">

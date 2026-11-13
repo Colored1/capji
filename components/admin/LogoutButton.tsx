@@ -8,7 +8,10 @@ export default function LogoutButton() {
     window.location.href = "/admin/login";
   }
   return (
-    <button onClick={logout} className="w-full rounded-xl border border-white/15 px-4 py-2 text-sm text-white/70 hover:border-red-400 hover:text-red-400">
+    <button
+      onClick={logout}
+      className="w-full rounded-xl border border-fg/15 px-4 py-2.5 text-sm text-fg/70 transition duration-300 hover:border-red-400 hover:text-red-400"
+    >
       تسجيل الخروج
     </button>
   );

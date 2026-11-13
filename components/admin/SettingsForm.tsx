@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { createClient } from "@/lib/supabase/client";
 
-const input = "w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white outline-none focus:border-gold";
+const input = "w-full rounded-xl border border-fg/15 bg-fg/[0.04] px-4 py-3 text-fg outline-none transition duration-300 focus:border-cyan focus:shadow-glow";
 
 export default function SettingsForm() {
   const supabase = useMemo(() => createClient(), []);
@@ -41,24 +41,24 @@ export default function SettingsForm() {
 
   return (
     <div className="max-w-3xl">
-      <h1 className="mb-6 text-2xl text-gold">الإعدادات والملف الشخصي</h1>
+      <h1 className="mb-6 text-neon text-3xl font-light">الإعدادات والملف الشخصي</h1>
       <form onSubmit={save} className="space-y-5">
         <label className="block space-y-2">
-          <span className="text-sm text-white/70">النبذة التعريفية</span>
+          <span className="text-sm text-fg/70">النبذة التعريفية</span>
           <textarea rows={6} value={about} onChange={(e) => setAbout(e.target.value)} className={input} />
         </label>
         <label className="block space-y-2">
-          <span className="text-sm text-white/70">المهارات (افصل بينها بفاصلة)</span>
+          <span className="text-sm text-fg/70">المهارات (افصل بينها بفاصلة)</span>
           <textarea rows={3} value={skills} onChange={(e) => setSkills(e.target.value)} className={input} />
         </label>
         <label className="block space-y-2">
-          <span className="text-sm text-white/70">روابط التواصل: الاسم|الرابط، سطر لكل رابط</span>
+          <span className="text-sm text-fg/70">روابط التواصل: الاسم|الرابط، سطر لكل رابط</span>
           <textarea rows={4} value={social} onChange={(e) => setSocial(e.target.value)} placeholder="Instagram|https://instagram.com/..." className={input} />
         </label>
-        <button type="submit" disabled={saving} className="rounded-full bg-gold px-6 py-2.5 font-semibold text-black disabled:opacity-60">
+        <button type="submit" disabled={saving} className="btn-primary rounded-full px-6 py-2.5 font-semibold disabled:opacity-60">
           {saving ? "جارٍ الحفظ..." : "حفظ"}
         </button>
-        {msg && <p className="text-sm text-white/70">{msg}</p>}
+        {msg && <p className="text-sm text-fg/70">{msg}</p>}
       </form>
     </div>
   );

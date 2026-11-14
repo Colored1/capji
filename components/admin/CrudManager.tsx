@@ -15,6 +15,17 @@ export type Field = {
 
 type Row = { id: string; created_at?: string } & Record<string, any>;
 
+// أنواع الملفات التي تعرضها المتصفحات مباشرة. HEIC/MOV تُرفض لأنها لا تُعرض على كل الأجهزة.
+const MIME_BY_EXT: Record<string, string> = {
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  png: "image/png",
+  webp: "image/webp",
+  gif: "image/gif",
+  mp4: "video/mp4",
+  webm: "video/webm",
+};
+
 type Props = {
   table: string;
   title: string;
@@ -67,9 +78,15 @@ export default function CrudManager({ table, title, fields, columns }: Props) {
     setMsg("");
     const urls: string[] = [];
     for (const file of Array.from(files)) {
-      const ext = file.name.split(".").pop() || "bin";
+      const ext = (file.name.split(".").pop() || "").toLowerCase();
+      const contentType = MIME_BY_EXT[ext];
+      if (!contentType) {
+        setMsg(`نوع الملف "${file.name}" غير مدعوم. استخدم JPG أو PNG أو WEBP أو MP4 أو WEBM (حوّل HEIC وMOV قبل الرفع).`);
+        setBusy(false);
+        return;
+      }
       const path = `${table}/${Date.now()}-${Math.random().toString(36).slice(2, 7)}.${ext}`;
-      const { error } = await supabase.storage.from("media").upload(path, file);
+      const { error } = await supabase.storage.from("media").upload(path, file, { contentType, cacheControl: "3600" });
       if (error) {
         setMsg(`فشل رفع الملف: ${error.message}`);
         setBusy(false);

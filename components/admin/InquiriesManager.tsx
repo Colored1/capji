@@ -67,16 +67,25 @@ export default function InquiriesManager() {
     else setItems((list) => list.filter((i) => i.id !== id));
   }
 
-  const shown = filter ? items.filter((i) => i.service_type === filter) : items;
+  const [statusFilter, setStatusFilter] = useState("");
+  const shown = items
+    .filter((i) => !filter || i.service_type === filter)
+    .filter((i) => !statusFilter || i.status === statusFilter);
 
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <h1 className="text-neon text-3xl font-light">صندوق الطلبات</h1>
+        <div className="flex flex-wrap gap-3">
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="rounded-xl border border-fg/15 bg-fg/[0.04] px-4 py-2 text-fg">
+          <option value="">كل الحالات</option>
+          {statuses.map((s) => <option key={s.value} value={s.value} className="bg-bg">{s.label}</option>)}
+        </select>
         <select value={filter} onChange={(e) => setFilter(e.target.value)} className="rounded-xl border border-fg/15 bg-fg/[0.04] px-4 py-2 text-fg">
           <option value="">كل الأنواع</option>
           {services.map((s) => <option key={s} value={s} className="bg-bg">{s}</option>)}
         </select>
+        </div>
       </div>
 
       {msg && <p className="mb-4 text-sm text-red-300">{msg}</p>}

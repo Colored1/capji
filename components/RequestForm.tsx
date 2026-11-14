@@ -40,6 +40,13 @@ export default function RequestForm() {
       setErrorMsg("تعذّر إرسال الطلب، حاول مرة أخرى أو تواصل عبر واتساب.");
       return;
     }
+    // إشعار فوري بالبريد والواتساب (لا يوقف الطلب إذا فشل)
+    fetch("/api/notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    }).catch(() => undefined);
+
     const text = `مرحباً أحمد، أنا ${values.full_name}. أريد: ${values.service_type}. ${values.details}`;
     setLastWhatsapp(`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`);
     setStatus("done");

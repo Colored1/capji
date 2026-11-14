@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import LogoutButton from "@/components/admin/LogoutButton";
+import NotificationBell from "@/components/admin/NotificationBell";
 
 const items = [
   { href: "/admin", label: "نظرة عامة" },
@@ -39,6 +40,9 @@ export default function PanelLayout({ children }: { children: ReactNode }) {
         </div>
       </aside>
       <section className="flex-1 p-6 md:p-10">
+        <div className="mb-6 flex justify-end">
+          <NotificationBell />
+        </div>
         {children}
         <div className="mt-10 md:hidden">
           <LogoutButton />

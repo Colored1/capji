@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { App, Design, Portfolio, Project } from "@/lib/data";
+import { MediaImage, MediaVideo } from "@/components/Media";
 
 type Tab = "projects" | "apps" | "designs";
 
@@ -18,7 +19,7 @@ function Empty() {
 function ProjectCard({ p }: { p: Project }) {
   return (
     <div className="glass-card overflow-hidden">
-      {p.cover_url && <img src={p.cover_url} alt={p.title} className="h-52 w-full object-cover" />}
+      {p.cover_url && <MediaImage src={p.cover_url} alt={p.title} className="h-52 w-full object-cover" />}
       <div className="p-6">
         <h3 className="mb-2 text-xl text-cyan">{p.title}</h3>
         <p className="mb-4 text-sm leading-relaxed text-fg/70">{p.description}</p>
@@ -45,7 +46,7 @@ function AppCard({ a }: { a: App }) {
       {shots.length > 0 && (
         <div className="flex gap-3 overflow-x-auto bg-fg/[0.03] p-3">
           {shots.map((s) => (
-            <img key={s} src={s} alt={a.name} className="h-56 w-auto rounded-xl object-cover" />
+            <MediaImage key={s} src={s} alt={a.name} className="h-56 w-auto shrink-0 rounded-xl object-cover" />
           ))}
         </div>
       )}
@@ -74,10 +75,12 @@ function DesignCard({ d }: { d: Design }) {
   return (
     <div className="glass-card overflow-hidden">
       {d.video_url ? (
-        <video src={d.video_url} controls playsInline preload="metadata" className="h-56 w-full bg-black object-cover" />
+        <MediaVideo src={d.video_url} title={d.title} className="h-56 w-full object-cover" />
       ) : d.image_url ? (
-        <img src={d.image_url} alt={d.title} className="h-56 w-full object-cover" />
-      ) : null}
+        <MediaImage src={d.image_url} alt={d.title} className="h-56 w-full object-cover" />
+      ) : (
+        <div className="flex h-56 items-center justify-center bg-fg/[0.04] text-sm text-fg/40">لا توجد معاينة</div>
+      )}
       <div className="p-5">
         <h3 className="text-cyan">{d.title}</h3>
         {d.category && <p className="mt-1 text-xs text-fg/50">{d.category}</p>}

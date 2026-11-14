@@ -1,10 +1,12 @@
-import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Works from "@/components/Works";
 import Services from "@/components/Services";
 import RequestForm from "@/components/RequestForm";
 import Footer from "@/components/Footer";
+import HeroSlider from "@/components/HeroSlider";
+import PortfolioGallery from "@/components/PortfolioGallery";
 import { getPortfolio } from "@/lib/data";
+import { buildSlides } from "@/lib/slides";
+import { site } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -12,9 +14,9 @@ export default async function Home() {
   const data = await getPortfolio();
   return (
     <main id="top">
-      <Hero />
+      <HeroSlider slides={buildSlides(data)} name={site.ownerName} subtitle={site.tagline} />
       <About settings={data.settings} />
-      <Works data={data} />
+      <PortfolioGallery data={data} />
       <Services />
       <RequestForm />
       <Footer />

@@ -20,9 +20,51 @@ const tajawal = Tajawal({
   weight: ["300", "400", "500", "700"],
 });
 
+const siteTitle = `${site.ownerName} | ${site.brand}`;
+
 export const metadata: Metadata = {
-  title: `${site.ownerName} | ${site.brand}`,
-  description: site.ownerTitle,
+  metadataBase: new URL(site.url),
+  title: {
+    default: siteTitle,
+    template: `%s | ${site.brand}`,
+  },
+  description: `${site.ownerTitle}. مطور ومصمم من اليمن (إب) يقدم حلول البرمجة والتطبيقات والشبكات والتصميم والمونتاج.`,
+  keywords: [
+    "أحمد نعمان حسان",
+    "كابجي",
+    "CAPJI",
+    "مهندس برمجيات",
+    "تطوير مواقع",
+    "تطوير تطبيقات أندرويد",
+    "صيانة حواسيب",
+    "إدارة الشبكات",
+    "الأمن السيبراني",
+    "تصميم جرافيك",
+    "مونتاج فيديو",
+    "مطور يمني",
+    "إب",
+  ],
+  authors: [{ name: site.ownerName, url: site.url }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "ar_YE",
+    url: site.url,
+    siteName: site.brand,
+    title: siteTitle,
+    description: site.ownerTitle,
+    images: [{ url: "/brand/logo.png", width: 1254, height: 1254, alt: site.brand }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: site.ownerTitle,
+    images: ["/brand/logo.png"],
+  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export const viewport: Viewport = {

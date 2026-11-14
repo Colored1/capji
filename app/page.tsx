@@ -12,8 +12,22 @@ export const revalidate = 60;
 
 export default async function Home() {
   const [data, slides] = await Promise.all([getPortfolio(), getHeroSlides()]);
+
+  // بيانات منظمة (Schema.org) تساعد محركات البحث على فهم الصفحة
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.ownerName,
+    alternateName: site.brand,
+    url: site.url,
+    jobTitle: "Software Engineer",
+    description: site.ownerTitle,
+    address: { "@type": "PostalAddress", addressLocality: "إب", addressCountry: "YE" },
+  };
+
   return (
     <main id="top">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <HeroSlider slides={slides} name={site.ownerName} subtitle={site.tagline} />
       <About settings={data.settings} />
       <PortfolioGallery data={data} />

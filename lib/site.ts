@@ -1,6 +1,7 @@
 // بيانات الموقع الأساسية. عدّل هنا فقط عند الحاجة.
 export const site = {
   brand: "كابجي",
+  url: "https://capji-capji.vercel.app",
   ownerName: "أحمد نعمان حسان",
   ownerTitle: "مهندس برمجيات | مطور تطبيقات ومواقع | مختص هاردوير وشبكات | مصمم جرافيك ومونتير فيديو",
   tagline: "Software Engineer • Designer • Video Editor",

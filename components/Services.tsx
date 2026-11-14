@@ -7,9 +7,9 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="mx-auto max-w-6xl px-6 py-28">
-      <h2 className="reveal mb-14 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">الحلول التقنية</h2>
-      <div className="grid gap-6 md:grid-cols-2">
+    <section id="services" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <h2 className="reveal mb-10 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">الحلول التقنية</h2>
+      <div className="grid gap-5 md:grid-cols-2">
         {services.map((s, i) => (
           <div key={s.title} className="reveal glass-card p-8">
             <span className="mb-4 block font-mono text-sm text-violet">0{i + 1}</span>

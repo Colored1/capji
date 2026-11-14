@@ -54,9 +54,9 @@ export default function RequestForm() {
   }
 
   return (
-    <section id="request" className="mx-auto max-w-3xl px-6 py-28">
+    <section id="request" className="mx-auto max-w-3xl px-6 py-16 md:py-20">
       <h2 className="reveal mb-4 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">ابدأ مشروعك أو حل مشكلتك</h2>
-      <p className="reveal mb-12 text-center text-fg/60">اكتب تفاصيل طلبك، وسأتواصل معك في أقرب وقت.</p>
+      <p className="reveal mb-8 text-center text-fg/60">اكتب تفاصيل طلبك، وسأتواصل معك في أقرب وقت.</p>
 
       <form onSubmit={handleSubmit} className="reveal glass-card space-y-5 p-6 md:p-10">
         <div className="grid gap-5 md:grid-cols-2">
@@ -85,7 +85,7 @@ export default function RequestForm() {
         {status === "error" && <p className="text-center text-red-400">{errorMsg}</p>}
       </form>
 
-      <div className="reveal mt-10 text-center">
+      <div className="reveal mt-6 text-center">
         <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn-ghost inline-block rounded-full px-6 py-3 text-fg">
           تواصل فوري عبر واتساب {site.whatsappDisplay}
         </a>

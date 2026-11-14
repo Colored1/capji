@@ -198,21 +198,21 @@ export default function PortfolioGallery({ data }: { data: Portfolio }) {
 
   const content = {
     projects: data.projects.length ? (
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {data.projects.map((p, i) => (
           <ProjectCard key={p.id} p={p} index={i} onOpen={setLightbox} />
         ))}
       </div>
     ) : empty,
     apps: data.apps.length ? (
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {data.apps.map((a, i) => (
           <AppCard key={a.id} a={a} index={i} onOpen={setLightbox} />
         ))}
       </div>
     ) : empty,
     designs: data.designs.length ? (
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {data.designs.map((d, i) => (
           <DesignCard key={d.id} d={d} index={i} onOpen={setLightbox} />
         ))}
@@ -221,9 +221,9 @@ export default function PortfolioGallery({ data }: { data: Portfolio }) {
   };
 
   return (
-    <section id="works" className="mx-auto max-w-6xl px-6 py-28">
-      <h2 className="reveal mb-10 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">معرض الأعمال</h2>
-      <div className="reveal mb-12 flex flex-wrap justify-center gap-3">
+    <section id="works" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      <h2 className="reveal mb-8 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">معرض الأعمال</h2>
+      <div className="reveal mb-8 flex flex-wrap justify-center gap-3">
         {tabs.map((t) => (
           <button
             key={t.key}

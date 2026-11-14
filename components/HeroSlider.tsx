@@ -68,7 +68,7 @@ export default function HeroSlider({ slides, name, subtitle }: Props) {
       onPointerUp={onPointerUp}
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
-      className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-bg"
+      className="relative h-[88svh] min-h-[520px] w-full md:h-[92svh] overflow-hidden bg-bg"
     >
       {/* الوسائط */}
       <div className="absolute inset-0">

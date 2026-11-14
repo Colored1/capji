@@ -2,7 +2,7 @@ import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-fg/10 px-6 py-14 text-center text-sm text-fg/60">
+    <footer className="border-t border-fg/10 px-6 py-10 text-center text-sm text-fg/60">
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4">
         <img src="/brand/mark-dark.png" alt={site.brand} className="logo-dark h-16 w-auto" />
         <img src="/brand/mark-light.png" alt="" aria-hidden className="logo-light h-16 w-auto" />

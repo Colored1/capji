@@ -5,6 +5,7 @@ import NotificationBell from "@/components/admin/NotificationBell";
 
 const items = [
   { href: "/admin", label: "نظرة عامة" },
+  { href: "/admin/hero", label: "واجهة الموقع (Hero)" },
   { href: "/admin/projects", label: "المشاريع البرمجية" },
   { href: "/admin/apps", label: "تطبيقات الجوال" },
   { href: "/admin/designs", label: "التصاميم والمونتاج" },

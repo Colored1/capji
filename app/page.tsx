@@ -5,16 +5,16 @@ import Footer from "@/components/Footer";
 import HeroSlider from "@/components/HeroSlider";
 import PortfolioGallery from "@/components/PortfolioGallery";
 import { getPortfolio } from "@/lib/data";
-import { buildSlides } from "@/lib/slides";
+import { getHeroSlides } from "@/lib/hero";
 import { site } from "@/lib/site";
 
 export const revalidate = 60;
 
 export default async function Home() {
-  const data = await getPortfolio();
+  const [data, slides] = await Promise.all([getPortfolio(), getHeroSlides()]);
   return (
     <main id="top">
-      <HeroSlider slides={buildSlides(data)} name={site.ownerName} subtitle={site.tagline} />
+      <HeroSlider slides={slides} name={site.ownerName} subtitle={site.tagline} />
       <About settings={data.settings} />
       <PortfolioGallery data={data} />
       <Services />

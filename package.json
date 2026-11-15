@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@react-three/drei": "9.105.6",
@@ -17,7 +20,8 @@
     "next": "14.2.15",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "three": "0.160.0"
+    "three": "0.160.0",
+    "@opennextjs/cloudflare": "latest"
   },
   "devDependencies": {
     "@types/node": "20.14.10",
@@ -27,6 +31,7 @@
     "autoprefixer": "10.4.20",
     "postcss": "8.4.41",
     "tailwindcss": "3.4.10",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "wrangler": "latest"
   }
 }

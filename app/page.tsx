@@ -16,11 +16,9 @@ export default async function Home() {
   // بيانات منظمة (Schema.org) تساعد محركات البحث على فهم الصفحة
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: site.ownerName,
-    alternateName: site.brand,
+    "@type": "Organization",
+    name: site.brand,
     url: site.url,
-    jobTitle: "Software Engineer",
     description: site.ownerTitle,
     address: { "@type": "PostalAddress", addressLocality: "إب", addressCountry: "YE" },
   };

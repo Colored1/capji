@@ -20,7 +20,7 @@ const tajawal = Tajawal({
   weight: ["300", "400", "500", "700"],
 });
 
-const siteTitle = `${site.ownerName} | ${site.brand}`;
+const siteTitle = site.brand;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -30,7 +30,6 @@ export const metadata: Metadata = {
   },
   description: `${site.ownerTitle}. مطور ومصمم من اليمن (إب) يقدم حلول البرمجة والتطبيقات والشبكات والتصميم والمونتاج.`,
   keywords: [
-    "أحمد نعمان حسان",
     "كابجي",
     "CAPJI",
     "مهندس برمجيات",
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     "مطور يمني",
     "إب",
   ],
-  authors: [{ name: site.ownerName, url: site.url }],
+  authors: [{ name: site.brand, url: site.url }],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

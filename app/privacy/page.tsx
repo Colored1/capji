@@ -19,7 +19,7 @@ export default function PrivacyPage() {
       <p className="mb-4">لطلب حذف بياناتك تواصل معنا عبر البريد: {site.email}</p>
 
       <h2 className="mt-8 mb-3 text-xl text-gold">التواصل</h2>
-      <p className="mb-4">{site.ownerName} — {site.email} — {site.location}</p>
+      <p className="mb-4">{site.brand} — {site.email} — {site.location}</p>
     </main>
   );
 }

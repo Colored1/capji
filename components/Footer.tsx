@@ -14,7 +14,7 @@ export default function Footer() {
           </a>
           <span>{site.location}</span>
         </div>
-        <p className="mt-4 text-xs text-fg/40">© {new Date().getFullYear()} {site.ownerName}</p>
+        <p className="mt-4 text-xs text-fg/40">© {new Date().getFullYear()} {site.brand}</p>
       </div>
     </footer>
   );

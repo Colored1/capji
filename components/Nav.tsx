@@ -7,10 +7,11 @@ import GoogleAuthButton from "@/components/GoogleAuthButton";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
-  { href: "#about", label: "عني" },
-  { href: "#works", label: "الأعمال" },
-  { href: "#services", label: "الحلول التقنية" },
-  { href: "#request", label: "اطلب خدمة" },
+  { href: "/live", label: "البث المباشر" },
+  { href: "/#about", label: "عني" },
+  { href: "/#works", label: "الأعمال" },
+  { href: "/#services", label: "الحلول التقنية" },
+  { href: "/#request", label: "اطلب خدمة" },
 ];
 
 export default function Nav() {
@@ -21,7 +22,7 @@ export default function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-fg/5 bg-bg/60 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 md:px-8">
-        <a href="#top" aria-label={site.brand} className="flex shrink-0 items-center">
+        <a href="/" aria-label={site.brand} className="flex shrink-0 items-center">
           <img src="/brand/mark-dark.png" alt={site.brand} className="logo-dark h-11 w-auto drop-shadow-[0_0_12px_rgba(34,211,238,0.35)]" />
           <img src="/brand/mark-light.png" alt="" aria-hidden className="logo-light h-11 w-auto" />
         </a>

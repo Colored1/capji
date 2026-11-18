@@ -5,13 +5,13 @@ import type { SlideMedia } from "@/lib/slides";
 
 type Props = {
   slides: SlideMedia[];
-  name: string;
+  brand: string;
   subtitle: string;
 };
 
 const INTERVAL_MS = 6500;
 
-export default function HeroSlider({ slides, name, subtitle }: Props) {
+export default function HeroSlider({ slides, brand, subtitle }: Props) {
   const [index, setIndex] = useState(0);
   const [failed, setFailed] = useState<Record<string, true>>({});
   const [paused, setPaused] = useState(false);
@@ -116,12 +116,12 @@ export default function HeroSlider({ slides, name, subtitle }: Props) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgb(34_211_238/0.15),transparent_55%)]" />
 
       {/* المحتوى */}
-      <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-28 md:px-16 md:pb-32">
+      <div className="relative z-10 flex h-full flex-col justify-end px-4 pb-28 md:px-16 md:pb-32">
         <div className="fade-up max-w-3xl">
           <p className="mb-4 inline-block rounded-full border border-cyan/30 bg-cyan/5 px-4 py-1 text-xs tracking-widest text-cyan backdrop-blur">
             {subtitle}
           </p>
-          <h1 className="text-neon text-5xl font-light leading-tight md:text-8xl">{name}</h1>
+          <h1 className="text-neon break-words text-5xl font-bold leading-tight tracking-tight md:text-8xl">{brand}</h1>
           {current && (
             <div className="mt-5 glass-card inline-block max-w-md px-5 py-3">
               <p className="text-base font-medium text-fg">{current.title}</p>

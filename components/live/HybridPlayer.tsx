@@ -91,7 +91,7 @@ export default function HybridPlayer({ sources, title }: { sources: StreamLink[]
   const off = "border-fg/15 text-fg/70 hover:border-cyan/50 hover:text-cyan";
 
   return (
-    <div className="glass-card overflow-hidden p-2 md:p-3">
+    <div className="glass-card min-w-0 max-w-full overflow-hidden p-2 md:p-3">
       <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-black">
         {!active && (
           <div className="absolute inset-0 flex items-center justify-center p-6 text-center text-sm text-fg/50">

@@ -49,15 +49,15 @@ function TeamLogo({ src, name }: { src: string | null; name: string }) {
 
 function Versus({ match, compact = false }: { match: LiveMatch; compact?: boolean }) {
   return (
-    <div className={`flex items-center justify-center gap-3 ${compact ? "" : "py-1"}`}>
-      <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
-        <span className="truncate text-sm text-fg md:text-base">{match.team_a}</span>
+    <div className={`flex w-full min-w-0 flex-col items-center gap-2 sm:flex-row sm:gap-3 ${compact ? "" : "py-1"}`}>
+      <div className="flex w-full min-w-0 items-center justify-center gap-2 sm:flex-1 sm:justify-end">
+        <span className="min-w-0 truncate text-sm text-fg md:text-base">{match.team_a}</span>
         <TeamLogo src={match.team_a_logo} name={match.team_a} />
       </div>
       <span className="text-xs text-fg/40">ضد</span>
-      <div className="flex min-w-0 flex-1 items-center gap-2">
+      <div className="flex w-full min-w-0 items-center justify-center gap-2 sm:flex-1 sm:justify-start">
         <TeamLogo src={match.team_b_logo} name={match.team_b} />
-        <span className="truncate text-sm text-fg md:text-base">{match.team_b}</span>
+        <span className="min-w-0 truncate text-sm text-fg md:text-base">{match.team_b}</span>
       </div>
     </div>
   );
@@ -87,11 +87,11 @@ export default function LiveCenter({ matches, error }: { matches: LiveMatch[]; e
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         aria-pressed={isActive}
-        className={`glass-card flex w-full flex-col gap-2 p-4 text-right transition duration-300 ${
+        className={`glass-card flex w-full min-w-0 max-w-full flex-col gap-2 overflow-hidden p-4 text-right transition duration-300 ${
           isActive ? "border-cyan/50 shadow-glow" : ""
         }`}
       >
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex min-w-0 flex-wrap items-center justify-between gap-2">
           <StatusBadge status={m.status} />
           <span className="text-xs text-fg/50">{formatMatchDate(m.match_date)}</span>
         </div>
@@ -121,14 +121,14 @@ export default function LiveCenter({ matches, error }: { matches: LiveMatch[]; e
         <section className="space-y-4">
           <HybridPlayer key={selected.id} sources={sourcesOf(selected)} title={selected.title} />
 
-          <div className="glass-card space-y-3 p-4 md:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-lg text-fg md:text-xl">{selected.title}</h2>
+          <div className="glass-card min-w-0 max-w-full space-y-3 overflow-hidden p-4 md:p-5">
+            <div className="flex min-w-0 flex-wrap items-center justify-between gap-2">
+              <h2 className="min-w-0 break-words text-lg text-fg md:text-xl">{selected.title}</h2>
               <StatusBadge status={selected.status} />
             </div>
             <Versus match={selected} />
             <p className="text-xs text-fg/50">{formatMatchDate(selected.match_date)}</p>
-            {selected.description && <p className="text-sm leading-relaxed text-fg/70">{selected.description}</p>}
+            {selected.description && <p className="break-words text-sm leading-relaxed text-fg/70">{selected.description}</p>}
           </div>
         </section>
       )}

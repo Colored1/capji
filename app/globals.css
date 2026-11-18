@@ -183,3 +183,14 @@ textarea::placeholder {
     animation: none;
   }
 }
+
+/* حماية من التمرير الأفقي على الجوال: لا يتجاوز أي عنصر عرض الشاشة */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.grid > * {
+  min-width: 0;
+}

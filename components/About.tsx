@@ -11,9 +11,9 @@ export default function About({ settings }: { settings: Settings | null }) {
   const social = (settings?.social_links || "").split("\n").map((l) => l.split("|")).filter((p) => p.length === 2);
 
   return (
-    <section id="about" className="mx-auto max-w-5xl px-6 py-16 md:py-20">
+    <section id="about" className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
       <h2 className="reveal mb-8 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">نبذة عني</h2>
-      <div className="reveal glass-card p-8 md:p-12">
+      <div className="reveal glass-card min-w-0 break-words p-5 sm:p-8 md:p-12">
         <p className="text-lg leading-loose text-fg/85">{about}</p>
         <p className="mt-6 text-sm text-cyan/80">{site.ownerTitle}</p>
         <div className="mt-8 flex flex-wrap gap-3">

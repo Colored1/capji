@@ -28,7 +28,7 @@ export default async function Home() {
   return (
     <main id="top">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <HeroSlider slides={slides} name={site.ownerName} subtitle={site.tagline} />
+      <HeroSlider slides={slides} brand={`${site.brand} LIVE`} subtitle={site.tagline} />
       <About settings={data.settings} />
       <PortfolioGallery data={data} />
       <Services />

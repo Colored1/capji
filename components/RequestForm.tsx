@@ -54,7 +54,7 @@ export default function RequestForm() {
   }
 
   return (
-    <section id="request" className="mx-auto max-w-3xl px-6 py-16 md:py-20">
+    <section id="request" className="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-20">
       <h2 className="reveal mb-4 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">ابدأ مشروعك أو حل مشكلتك</h2>
       <p className="reveal mb-8 text-center text-fg/60">اكتب تفاصيل طلبك، وسأتواصل معك في أقرب وقت.</p>
 

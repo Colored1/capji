@@ -221,7 +221,7 @@ export default function PortfolioGallery({ data }: { data: Portfolio }) {
   };
 
   return (
-    <section id="works" className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <section id="works" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
       <h2 className="reveal mb-8 text-center text-3xl font-light tracking-wide text-neon md:text-5xl">معرض الأعمال</h2>
       <div className="reveal mb-8 flex flex-wrap justify-center gap-3">
         {tabs.map((t) => (

@@ -343,7 +343,7 @@ export default function LiveMatchesManager() {
             {draft.streams.map((s, i) => {
               const hasUrl = isHttpUrl(s.url.trim());
               return (
-                <div key={i} className="flex flex-col gap-2 md:flex-row md:items-center">
+                <div key={i} className="flex min-w-0 flex-col gap-2 md:flex-row md:items-center">
                   <input value={s.label} onChange={(e) => setStream(i, { label: e.target.value })} placeholder="الاسم مثل 1080p" className={`${input} md:w-40`} />
                   <input dir="ltr" value={s.url} onChange={(e) => setStream(i, { url: e.target.value })} placeholder="https://... (m3u8 أو يوتيوب أو MP4)" className={input} />
                   <span className="shrink-0 text-xs text-fg/50">
@@ -397,7 +397,7 @@ export default function LiveMatchesManager() {
         {!loading && matches.length === 0 && <p className="text-fg/50">لا توجد مباريات بعد.</p>}
 
         {matches.map((m) => (
-          <div key={m.id} className="glass-card flex flex-col gap-3 p-4 md:flex-row md:items-center">
+          <div key={m.id} className="glass-card flex min-w-0 flex-col gap-3 overflow-hidden p-4 md:flex-row md:items-center">
             <div className="min-w-0 flex-1">
               <p className="truncate text-fg">{m.title}</p>
               <p className="mt-1 text-xs text-fg/50">
